@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwfcvdxkmuf3q"]
+[gd_scene load_steps=11 format=3 uid="uid://bwfcvdxkmuf3q"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_pre5t"]
 [ext_resource type="Texture2D" uid="uid://12lto34mdmxy" path="res://assets/sprites/slime_green.png" id="1_xojkc"]
 [ext_resource type="PackedScene" uid="uid://p3r2yi7cqbrj" path="res://scenes/killzone.tscn" id="2_h6vn6"]
+[ext_resource type="AudioStream" uid="uid://0hc4gm73hpiv" path="res://assets/sounds/hurt.wav" id="4_5mw6q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lejf3"]
 atlas = ExtResource("1_xojkc")
@@ -64,3 +65,9 @@ target_position = Vector2(11, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_e8d0s")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_5mw6q")
+bus = &"SFX"
+
+[connection signal="body_entered" from="Killzone" to="." method="_on_killzone_body_entered"]

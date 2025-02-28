@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://ciijf8676uy2b"]
+[gd_scene load_steps=18 format=4 uid="uid://ciijf8676uy2b"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_iusrn"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="2_lyi8w"]
 [ext_resource type="PackedScene" uid="uid://c2mswr8iyjm5y" path="res://scenes/player.tscn" id="2_ycp4b"]
 [ext_resource type="Texture2D" uid="uid://kg6jlb0fo6o0" path="res://assets/sprites/world_tileset.png" id="3_n34sf"]
 [ext_resource type="PackedScene" uid="uid://bsai03u57dy" path="res://scenes/platform.tscn" id="4_qtlvu"]
+[ext_resource type="AudioStream" uid="uid://dvcjmrhup1nex" path="res://assets/sounds/jump.wav" id="5_nmsp3"]
 [ext_resource type="PackedScene" uid="uid://d21eautd7spse" path="res://scenes/coin.tscn" id="5_yrg0d"]
 [ext_resource type="PackedScene" uid="uid://p3r2yi7cqbrj" path="res://scenes/killzone.tscn" id="6_ma8it"]
 [ext_resource type="PackedScene" uid="uid://bwfcvdxkmuf3q" path="res://scenes/slime.tscn" id="7_nw8ww"]
@@ -361,15 +362,19 @@ tile_set = SubResource("TileSet_3dwg5")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -8)
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 limit_bottom = 250
 limit_smoothed = true
 position_smoothing_speed = 2.0
 
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("5_nmsp3")
+volume_db = -30.0
+
 [node name="Killzone" parent="." instance=ExtResource("6_ma8it")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(148, 142)
+position = Vector2(217, 125)
 shape = SubResource("WorldBoundaryShape2D_tw3ym")
 
 [node name="Coins" type="Node" parent="."]
